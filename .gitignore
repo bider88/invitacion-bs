@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+
+# production
+/dist/
+
+# Astro build output
+/.astro/
+
+# local env files
+.env
+.env.*
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# misc
+.DS_Store
+Thumbs.db
+
+# deployment
+.vercel/
+.netlify/
+.output/
+.next/
+
+# editor directories and files
+.vscode/
+.idea/
+*.swp
+*~
