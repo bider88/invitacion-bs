@@ -1,10 +1,24 @@
 ---
 import Button from '../shared/Button.astro';
+import type { DetallesEventoProps } from '../../types/sections';
+
+interface Props extends DetallesEventoProps {}
+
+const {
+  id = 'detalles',
+  class: className = '',
+  date = '21 de Junio de 2025',
+  time = '4:00 PM',
+  location = 'Salon Jardín El Pilar, Boulevard el Pilar modulo 6 entre calle Irlanda del Norte e Italia, 72310 Puebla, Pue.',
+  mapUrl = 'https://www.google.com.mx/maps/place/Salon+Jardin+El+Pilar/@19.0546679,-98.1270858,17z/data=!4m6!3m5!1s0x85cfeb089dc5e20f:0x2e002d29d596b14!8m2!3d19.0547495!4d-98.12649!16s%2Fg%2F11fn7jqvty?entry=ttu&g_ep=EgoyMDI1MDUxMy4xIKXMDSoASAFQAw%3D%3D'
+} = Astro.props;
+
+const sectionClasses = `relative flex flex-col justify-center items-center min-h-screen w-screen overflow-hidden ${className}`;
 ---
 
 <section
-  id="detalles"
-  class="relative flex flex-col justify-center items-center min-h-screen w-screen overflow-hidden"
+  id={id}
+  class={sectionClasses}
 >
   <!-- Video background -->
   <video
@@ -23,15 +37,14 @@ import Button from '../shared/Button.astro';
       Detalles del Evento
     </h2>
     <ul class="text-xl space-y-1 text-gray-800 mb-6">
-      <li><span class="font-semibold">Fecha:</span> 21 de Junio de 2025</li>
-      <li><span class="font-semibold">Hora:</span> 4:00 PM</li>
+      <li><span class="font-semibold">Fecha:</span> {date}</li>
+      <li><span class="font-semibold">Hora:</span> {time}</li>
       <li>
-        <span class="font-semibold">Lugar:</span> Salon Jardín El Pilar, Boulevard
-        el Pilar modulo 6 entre calle Irlanda del Norte e Italia, 72310 Puebla, Pue.
+        <span class="font-semibold">Lugar:</span> {location}
       </li>
     </ul>
     <Button
-      href="https://www.google.com.mx/maps/place/Salon+Jardin+El+Pilar/@19.0546679,-98.1270858,17z/data=!4m6!3m5!1s0x85cfeb089dc5e20f:0x2e002d29d596b14!8m2!3d19.0547495!4d-98.12649!16s%2Fg%2F11fn7jqvty?entry=ttu&g_ep=EgoyMDI1MDUxMy4xIKXMDSoASAFQAw%3D%3D"
+      href={mapUrl}
       target="_blank"
       variant="secondary"
       class="text-lg font-semibold"

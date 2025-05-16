@@ -1,10 +1,23 @@
 ---
-import Button from "../shared/Button.astro";
+import Button from '../shared/Button.astro';
+import type { RSVPProps } from '../../types/sections';
+
+interface Props extends RSVPProps {}
+
+const {
+  id = 'rsvp',
+  class: className = '',
+  phoneNumber = '5212224498199',
+  buttonText = 'Confirmar Asistencia'
+} = Astro.props;
+
+const sectionClasses = `relative flex flex-col justify-center items-center min-h-screen w-screen overflow-hidden text-center ${className}`;
+const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}`;
 ---
 
 <section
-  id="rsvp"
-  class="relative flex flex-col justify-center items-center min-h-screen w-screen overflow-hidden text-center"
+  id={id}
+  class={sectionClasses}
 >
   <!-- Video background -->
   <video
@@ -30,10 +43,10 @@ import Button from "../shared/Button.astro";
       Es por eso que te pedimos nos confirmes tu asistencia.
     </p>
     <Button
-      href="https://api.whatsapp.com/send?phone=5212224498199"
+      href={whatsappUrl}
       target="_blank"
       variant="secondary"
-      >Confirmar Asistencia</Button
+      >{buttonText}</Button
     >
   </div>
 </section>

@@ -1,13 +1,31 @@
 ---
+import type { ProgramaProps, ProgramItem } from '../../types/sections';
+
+interface Props extends ProgramaProps {}
+
+const {
+  id = 'programa',
+  class: className = '',
+  items = [
+    { time: '16:00', activity: 'Bienvenida y presentación' },
+    { time: '16:30', activity: 'Juegos y dinámicas' },
+    { time: '17:30', activity: 'Comida y convivencia' },
+    { time: '19:00', activity: 'Agradecimientos' }
+  ] as readonly ProgramItem[]
+} = Astro.props;
+
+const sectionClasses = `relative flex flex-col justify-center items-center min-h-screen w-screen overflow-hidden ${className}`;
 ---
-<section id="programa" class="relative flex flex-col justify-center items-center min-h-screen w-screen overflow-hidden">
+<section id={id} class={sectionClasses}>
   <div class="absolute inset-0 bg-gradient-to-br from-purple-100 via-white to-purple-200 opacity-60 z-0"></div>
   <div class="relative z-10 p-6 flex flex-col items-center w-full h-full">
   <h2 class="text-3xl font-semibold text-pink-600 mb-3">Programa</h2>
-  <ol class="list-decimal list-inside space-y-1 text-gray-800 text-xl">
-    <li>Bienvenida y presentación</li>
-    <li>Juegos y dinámicas</li>
-    <li>Comida y convivencia</li>
-    <li>Agradecimientos</li>
+  <ol class="list-decimal list-inside space-y-2 text-gray-800 text-xl">
+    {items.map((item) => (
+      <li>
+        {item.time && <span class="font-semibold">{item.time}:</span>} {item.activity}
+        {item.description && <p class="text-gray-600 text-lg ml-6">{item.description}</p>}
+      </li>
+    ))}
   </ol>
 </section>

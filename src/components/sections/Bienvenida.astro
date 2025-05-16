@@ -1,66 +1,43 @@
 ---
 import Button from '../shared/Button.astro';
+import type { BienvenidaProps } from '../../types/sections';
+
+interface Props extends BienvenidaProps {}
+
+const {
+  id = 'bienvenida',
+  class: className = '',
+  title = '¡Estás Invitado al Baby Shower!',
+  subtitle = 'Andrea',
+  description = 'Acompáñanos a celebrar la llegada de nuestro bebé con alegría y amor.'
+} = Astro.props;
+
+const sectionClasses = `relative flex flex-col items-center justify-center text-center min-h-screen w-screen overflow-hidden ${className}`;
 ---
-<section id="bienvenida" class="relative flex flex-col items-center justify-center text-center min-h-screen w-screen overflow-hidden">
+<section id={id} class={sectionClasses}>
   <!-- Video background -->
   <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none" src="/assets/backgrounds/bg.mp4"></video>
   <!-- Gradient overlay for readability -->
   <div class="absolute inset-0 bg-gradient-to-br from-pink-200 via-pink-100 to-blue-100 opacity-60 z-10"></div>
   <div class="relative z-20 p-8 flex flex-col items-center">
-    <h1 class="text-4xl md:text-6xl font-extrabold text-pink-600 drop-shadow mb-4">¡Estás Invitado al Baby Shower!</h1>
-    <h2 class="text-7xl font-semibold text-pink-500 mt-5 mb-9">Andrea</h2>
-    <p class="text-xl md:text-2xl text-gray-700 mb-6 max-w-xl">Acompáñanos a celebrar la llegada de nuestro bebé con alegría y amor.</p>
+    <h1 class="text-4xl md:text-6xl font-extrabold text-pink-600 drop-shadow mb-4">{title}</h1>
+    <h2 class="text-7xl font-semibold text-pink-500 mt-5 mb-9">{subtitle}</h2>
+    <p class="text-xl md:text-2xl text-gray-700 mb-6 max-w-xl">{description}</p>
     <Button id="audio-toggle" ariaLabel="Reproducir/Pausar audio" variant="primary">
       <span id="audio-icon"></span>
     </Button>
     <audio id="bg-audio" src="/assets/audios/indi.mp3" preload="auto" autoplay></audio>
-    <script type="module">
-      const audio = document.getElementById('bg-audio');
-      const btn = document.getElementById('audio-toggle');
-      const icon = document.getElementById('audio-icon');
-      let isPlaying = false;
-
-      function setIcon() {
-        icon.innerHTML = isPlaying
-          ? `<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-6 h-6 text-pink-600'><rect x='6' y='5' width='4' height='14' rx='2' fill='currentColor'/><rect x='14' y='5' width='4' height='14' rx='2' fill='currentColor'/></svg>`
-          : `<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-6 h-6 text-pink-600'><polygon points='6,4 20,12 6,20' fill='currentColor'/></svg>`;
-      }
-
-      // Try to play audio on load (may require user interaction)
-      async function tryAutoplay() {
-        try {
-          await audio.play();
-          isPlaying = true;
-        } catch (e) {
-          isPlaying = false;
-        }
-        setIcon();
-      }
-
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        if (audio.paused) {
-          audio.play();
-          isPlaying = true;
-        } else {
-          audio.pause();
-          isPlaying = false;
-        }
-        setIcon();
+    <script src="../../scripts/audio-player.ts"></script>
+    <script>
+      // Initialize audio player when DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        // Import is wrapped in a function to ensure it's treated as a module
+        import('../../scripts/audio-player.ts').then(module => {
+          module.initAudioPlayer();
+        }).catch(error => {
+          console.error('Failed to load audio player module:', error);
+        });
       });
-
-      audio.addEventListener('play', () => {
-        isPlaying = true;
-        setIcon();
-      });
-      audio.addEventListener('pause', () => {
-        isPlaying = false;
-        setIcon();
-      });
-
-      setIcon();
-      tryAutoplay();
     </script>
   </div>
 </section>

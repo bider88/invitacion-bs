@@ -1,33 +1,26 @@
 ---
-interface Props {
-  id?: string;
-  type?: "button" | "submit" | "reset";
-  ariaLabel?: string;
-  variant?: "primary" | "secondary";
-  onClick?: string;
-  class?: string;
-  href?: string;
-  target?: string;
-}
+import type { ButtonProps } from '../../types/components';
+
+type Props = ButtonProps;
 
 const {
   id,
-  type = "button",
+  type = 'button',
   ariaLabel,
-  variant = "primary",
+  variant = 'primary',
   onClick,
-  class: className = "",
+  class: className = '',
   href,
   target,
-} = Astro.props;
+} = Astro.props as Props;
 
 // Base classes for all buttons
-const baseClasses = "rounded-full px-8 py-3 shadow transition flex items-center";
+const baseClasses = 'rounded-full px-8 py-3 shadow transition flex items-center';
 
 // Variant-specific classes
-const variantClasses = {
-  primary: "bg-white bg-opacity-80 hover:bg-pink-100",
-  secondary: "bg-pink-500 text-white hover:bg-pink-600",
+const variantClasses: Record<NonNullable<Props['variant']>, string> = {
+  primary: 'bg-white bg-opacity-80 hover:bg-pink-100',
+  secondary: 'bg-pink-500 text-white hover:bg-pink-600',
 };
 
 const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
