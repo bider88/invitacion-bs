@@ -1,0 +1,57 @@
+---
+interface Props {
+  id?: string;
+  type?: "button" | "submit" | "reset";
+  ariaLabel?: string;
+  variant?: "primary" | "secondary";
+  onClick?: string;
+  class?: string;
+  href?: string;
+  target?: string;
+}
+
+const {
+  id,
+  type = "button",
+  ariaLabel,
+  variant = "primary",
+  onClick,
+  class: className = "",
+  href,
+  target,
+} = Astro.props;
+
+// Base classes for all buttons
+const baseClasses = "rounded-full px-8 py-3 shadow transition flex items-center";
+
+// Variant-specific classes
+const variantClasses = {
+  primary: "bg-white bg-opacity-80 hover:bg-pink-100",
+  secondary: "bg-pink-500 text-white hover:bg-pink-600",
+};
+
+const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
+---
+
+{href ? (
+  <a 
+    id={id}
+    href={href}
+    target={target}
+    aria-label={ariaLabel}
+    class={buttonClasses}
+    onclick={onClick}
+  >
+    <slot />
+  </a>
+) : (
+  <button 
+    id={id} 
+    type={type} 
+    aria-label={ariaLabel}
+    class={buttonClasses}
+    onclick={onClick}
+  >
+    <slot />
+  </button>
+)}

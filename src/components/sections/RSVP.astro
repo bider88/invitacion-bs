@@ -1,0 +1,39 @@
+---
+import Button from "../shared/Button.astro";
+---
+
+<section
+  id="rsvp"
+  class="relative flex flex-col justify-center items-center min-h-screen w-screen overflow-hidden text-center"
+>
+  <!-- Video background -->
+  <video
+    autoplay
+    loop
+    muted
+    playsinline
+    class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
+    src="/assets/backgrounds/asistencia.mp4"></video>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-green-100 via-white to-green-200 opacity-60 z-0"
+  >
+  </div>
+  <div class="relative z-10 p-6 flex flex-col items-center w-full h-full">
+    <h2 class="text-3xl font-semibold text-pink-600 mb-3">
+      Confirmar Asistencia
+    </h2>
+    <p class="text-gray-800 text-xl">
+      Eres muy importante para nosotros y queremos que estés presente en esta
+      celebración tan especial.
+    </p>
+    <p class="text-gray-800 text-xl mb-6">
+      Es por eso que te pedimos nos confirmes tu asistencia.
+    </p>
+    <Button
+      href="https://api.whatsapp.com/send?phone=5212224498199"
+      target="_blank"
+      variant="secondary"
+      >Confirmar Asistencia</Button
+    >
+  </div>
+</section>
