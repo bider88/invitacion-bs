@@ -1,5 +1,11 @@
 ---
 import "./styles/global.css";
+import Bienvenida from "../components/Bienvenida.astro";
+import DetallesEvento from "../components/DetallesEvento.astro";
+import Programa from "../components/Programa.astro";
+import RSVP from "../components/RSVP.astro";
+import Regalos from "../components/Regalos.astro";
+import Footer from "../components/Footer.astro";
 ---
 <html lang="es">
   <head>
@@ -8,47 +14,13 @@ import "./styles/global.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body class="bg-gradient-to-b from-pink-50 to-blue-50 min-h-screen font-sans">
-    <main class="max-w-2xl mx-auto p-4 space-y-8">
-      <!-- Sección 1: Bienvenida / Introducción -->
-      <section id="bienvenida" class="bg-white bg-opacity-80 rounded-2xl shadow p-8 flex flex-col items-center text-center">
-        <h1 class="text-3xl md:text-4xl font-bold text-pink-500 mb-2">¡Estás Invitado al Baby Shower!</h1>
-        <p class="text-lg text-gray-700">Acompáñanos a celebrar la llegada de nuestro bebé con alegría y amor.</p>
-      </section>
-
-      <!-- Sección 2: Detalles del Evento -->
-      <section id="detalles" class="bg-blue-100 bg-opacity-60 rounded-2xl shadow p-6">
-        <h2 class="text-2xl font-semibold text-blue-600 mb-3">Detalles del Evento</h2>
-        <ul class="space-y-1 text-gray-800">
-          <li><span class="font-semibold">Fecha:</span> [Agrega la fecha aquí]</li>
-          <li><span class="font-semibold">Hora:</span> [Agrega la hora aquí]</li>
-          <li><span class="font-semibold">Lugar:</span> [Agrega la dirección aquí]</li>
-        </ul>
-      </section>
-
-      <!-- Sección 3: Programa / Actividades -->
-      <section id="programa" class="bg-purple-100 bg-opacity-60 rounded-2xl shadow p-6">
-        <h2 class="text-2xl font-semibold text-purple-600 mb-3">Programa</h2>
-        <ol class="list-decimal list-inside space-y-1 text-gray-800">
-          <li>Bienvenida y presentación</li>
-          <li>Juegos y dinámicas</li>
-          <li>Comida y convivencia</li>
-          <li>Agradecimientos</li>
-        </ol>
-      </section>
-
-      <!-- Sección 4: Confirmación de Asistencia (RSVP) -->
-      <section id="rsvp" class="bg-green-100 bg-opacity-60 rounded-2xl shadow p-6 flex flex-col items-center text-center">
-        <h2 class="text-2xl font-semibold text-green-600 mb-3">Confirmar Asistencia</h2>
-        <p class="text-gray-700">Por favor, confirma tu asistencia antes del <span class="font-semibold">[fecha límite]</span>.</p>
-        <p class="text-gray-700">Contacto: <span class="font-semibold">[Tu número de teléfono o correo electrónico]</span></p>
-      </section>
-
-      <!-- Sección 5: Mesa de Regalos / Información Adicional -->
-      <section id="regalos" class="bg-yellow-100 bg-opacity-60 rounded-2xl shadow p-6 flex flex-col items-center text-center">
-        <h2 class="text-2xl font-semibold text-yellow-600 mb-3">Mesa de Regalos</h2>
-        <p class="text-gray-700">Si deseas hacernos un regalo, puedes consultar nuestra mesa de regalos en <span class="font-semibold">[enlace o tienda]</span>.</p>
-        <p class="text-gray-700">¡Gracias por tu cariño y apoyo!</p>
-      </section>
+    <main>
+      <Bienvenida />
+      <DetallesEvento />
+      <Programa />
+      <RSVP />
+      <Regalos />
+      <Footer />
     </main>
   </body>
 </html>
