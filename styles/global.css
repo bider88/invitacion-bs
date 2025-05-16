@@ -8,3 +8,16 @@ section {
   max-width: 100vw;
   box-sizing: border-box;
 }
+
+#detalles {
+  background-image: url('/assets/backgrounds/detalles.jpg');
+}
+
+#rsvp {
+  background-image: url('/assets/backgrounds/rsvp.jpg');
+}
+
+#bienvenida, #programa, #regalos, #detalles, #rsvp {
+  background-size: cover;
+  background-position: center;
+}

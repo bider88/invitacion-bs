@@ -14,12 +14,12 @@ import Footer from "../components/Footer.astro";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body class="bg-gradient-to-b from-pink-50 to-blue-50 min-h-screen font-sans">
-    <main>
+    <main id="main">
       <Bienvenida />
       <DetallesEvento />
-      <Programa />
+      {false && <Programa />}
       <RSVP />
-      <Regalos />
+      {false && <Regalos />}
       <Footer />
     </main>
   </body>
