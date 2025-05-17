@@ -27,6 +27,8 @@ export interface DetallesEventoProps extends BaseSectionProps {
   readonly time?: string;
   readonly location?: string;
   readonly mapUrl?: string;
+  readonly description1?: string;
+  readonly description2?: string;
 }
 
 /**
