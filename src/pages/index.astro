@@ -6,6 +6,9 @@ import Programa from "../components/sections/Programa.astro";
 import RSVP from "../components/sections/RSVP.astro";
 import Regalos from "../components/sections/Regalos.astro";
 import Footer from "../components/Footer.astro";
+
+// Replace with your actual Google Analytics Measurement ID when you have one
+const googleAnalyticsId: string = 'G-JH24R5KFTR';
 ---
 <html lang="es">
   <head>
@@ -36,6 +39,21 @@ import Footer from "../components/Footer.astro";
     <link rel="canonical" href="https://invitacion-bs.netlify.app/">
     
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    
+    <!-- Google Analytics -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+    <script define:vars={{ measurementId: googleAnalyticsId }}>
+      // Type declaration for window.dataLayer
+      window.dataLayer = window.dataLayer || [];
+      
+      // Type-safe gtag function
+      function gtag(...args) {
+        window.dataLayer.push(arguments);
+      }
+      
+      gtag('js', new Date());
+      gtag('config', measurementId);
+    </script>
   </head>
   <body class="bg-gradient-to-b from-pink-50 to-blue-50 min-h-screen font-sans">
     <main id="main">
