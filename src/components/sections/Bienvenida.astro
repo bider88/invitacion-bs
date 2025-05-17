@@ -1,6 +1,7 @@
 ---
 import Button from '../shared/Button.astro';
 import type { BienvenidaProps } from '../../types/sections';
+import '../../styles/animations.scss';
 
 interface Props extends BienvenidaProps {}
 
@@ -8,8 +9,8 @@ const {
   id = 'bienvenida',
   class: className = '',
   title = '¡Estás Invitado al Baby Shower!',
-  subtitle = 'Andrea',
-  description = 'Acompáñanos a celebrar la llegada de nuestro bebé con alegría y amor.'
+  subtitle = '¡Se acerca un gran milagro y queremos celebrarlo contigo!',
+  description = 'Con muchísima emoción y amor, les contamos que estamos esperando la llegada de nuestro bebé, y queremos compartir esta alegría en un día muy especial. Te invitamos a celebrar con nosotros la dulce espera de nuestra bebé.'
 } = Astro.props;
 
 const sectionClasses = `relative flex flex-col items-center justify-center text-center min-h-screen w-screen overflow-hidden ${className}`;
@@ -20,13 +21,17 @@ const sectionClasses = `relative flex flex-col items-center justify-center text-
   <!-- Gradient overlay for readability -->
   <div class="absolute inset-0 bg-gradient-to-br from-pink-200 via-pink-100 to-blue-100 opacity-60 z-10"></div>
   <div class="relative z-20 p-8 flex flex-col items-center">
-    <h1 class="text-4xl md:text-6xl font-extrabold text-pink-600 drop-shadow mb-4">{title}</h1>
-    <h2 class="text-7xl font-semibold text-pink-500 mt-5 mb-9">{subtitle}</h2>
-    <p class="text-xl md:text-2xl text-gray-700 mb-6 max-w-xl">{description}</p>
-    <Button id="audio-toggle" ariaLabel="Reproducir/Pausar audio" variant="primary">
-      <span id="audio-icon"></span>
-    </Button>
-    <audio id="bg-audio" src="/assets/audios/indi.mp3" preload="auto" autoplay></audio>
+    <h1 class="text-5xl md:text-6xl font-extrabold text-pink-600 drop-shadow mb-4 animate-scaleIn">
+      <span class="animate-colorPulse">{title}</span>
+    </h1>
+    <h2 class="text-4xl font-semibold text-pink-500 mt-5 mb-9 animate-fadeInUp delay-300">{subtitle}</h2>
+    <p class="text-xl md:text-2xl text-gray-700 mb-6 max-w-xl animate-fadeInUp delay-500">{description}</p>
+    <div class="animate-fadeInUp delay-700">
+      <Button id="audio-toggle" ariaLabel="Reproducir/Pausar audio" variant="primary">
+        <span id="audio-icon" class="animate-bounce"></span>
+      </Button>
+    </div>
+    <audio id="bg-audio" src="/assets/audios/indi.mp3" preload="auto"></audio>
     <script src="../../scripts/audio-player.ts"></script>
     <script>
       // Initialize audio player when DOM is loaded
