@@ -15,7 +15,7 @@ const {
 } = Astro.props as Props;
 
 // Base classes for all buttons
-const baseClasses = 'rounded-full px-8 py-3 shadow transition flex items-center';
+const baseClasses = 'rounded-full px-8 py-3 shadow transition flex items-center cursor-pointer';
 
 // Variant-specific classes
 const variantClasses: Record<NonNullable<Props['variant']>, string> = {

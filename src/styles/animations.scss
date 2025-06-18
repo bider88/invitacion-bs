@@ -138,3 +138,33 @@
 .delay-700 {
     animation-delay: 700ms;
 }
+
+.delay-900 {
+    animation-delay: 900ms;
+}
+
+// Falling animation keyframes
+@keyframes fall {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px) rotate(5deg);
+    }
+    
+    50% {
+        opacity: 1;
+    }
+    
+    75% {
+        transform: translateY(10px) rotate(-3deg);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+.animate-fall {
+    animation: fall 6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    opacity: 0;
+}
